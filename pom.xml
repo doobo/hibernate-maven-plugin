@@ -1,0 +1,101 @@
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+  xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+  <modelVersion>4.0.0</modelVersion>
+
+  <groupId>cn.com.techsure</groupId>
+  <artifactId>hbm2java</artifactId>
+  <version>0.0.1-SNAPSHOT</version>
+  <packaging>jar</packaging>
+
+  <name>hbm2java</name>
+  <url>http://maven.apache.org</url>
+
+  <properties>
+    <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+     <hibernate-tools.version>3.6.0.CR1</hibernate-tools.version>
+  </properties>
+
+  <dependencies>
+  
+     <dependency>
+       <groupId>org.hibernate</groupId>
+       <artifactId>hibernate-tools</artifactId>
+       <version>${hibernate-tools.version}</version>
+       <exclusions>
+           <exclusion>
+               <artifactId>freemarker</artifactId>
+               <groupId>freemarker</groupId>
+           </exclusion>
+       </exclusions>
+  	</dependency>
+  	
+  </dependencies>
+<build>
+<plugins>
+	<plugin>
+	   <groupId>org.codehaus.mojo</groupId>
+	   <artifactId>hibernate3-maven-plugin</artifactId>
+	   <version>2.2</version>   
+	   <configuration>
+	       <components>
+	          				
+	           <component>
+	               <name>hbm2hbmxml</name>
+	               <implementation>jdbcconfiguration</implementation>
+	               <outputDirectory>src/main/resources/</outputDirectory>
+	           </component>
+	           	          
+	           <component>
+	               <name>hbm2java</name>
+	               <implementation>jdbcconfiguration</implementation>
+	               <outputDirectory>src/main/java/</outputDirectory>
+	           </component>
+	           
+	           <component>
+					<name>hbm2cfgxml</name>
+					<implementation>jdbcconfiguration</implementation>
+					<outputDirectory>src/main/resources/</outputDirectory>
+			   </component>
+	           
+	           <component>
+	               <name>hbm2doc</name>
+	               <implementation>jdbcconfiguration</implementation>
+	               <outputDirectory>doc</outputDirectory>
+	           </component>
+	           
+	           <component>
+	               <name>hbm2ddl</name>
+	               <implementation>annotationconfiguration</implementation>	                           
+	           </component>
+	               
+	       </components>
+	       
+	       <componentProperties>
+	           <!-- 反转规则配置文件 -->
+	           <revengfile>src/main/resources/reveng.xml</revengfile>
+	           <!-- Hibernate数据库连接属性文件 -->
+	           <propertyfile>src/main/resources/hibernate.properties</propertyfile>
+	           <!-- 生成实体类默认包 -->
+	           <packagename>cn.com.techsure.table</packagename>
+	           <jdk5>true</jdk5>
+	           <!-- 如果设置为true则生成JPA注解，若设置为false则生成hbml.xml -->
+	            <ejb3>false</ejb3>
+	        </componentProperties>
+	    </configuration>
+	    <dependencies>
+	        <dependency>
+	            <groupId>cglib</groupId>
+	            <artifactId>cglib-nodep</artifactId>
+	            <version>2.2.2</version>
+	        </dependency>
+	        <dependency>
+		      <groupId>mysql</groupId>
+		      <artifactId>mysql-connector-java</artifactId>
+		      <version>5.1.6</version>
+		    </dependency>
+	    </dependencies>
+	</plugin>
+</plugins>
+</build>
+
+</project>

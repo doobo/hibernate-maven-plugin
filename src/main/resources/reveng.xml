@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE hibernate-reverse-engineering PUBLIC "-//Hibernate/Hibernate Reverse Engineering DTD 3.0//EN" "http://hibernate.sourceforge.net/hibernate-reverse-engineering-3.0.dtd" >
+
+<hibernate-reverse-engineering>
+    <!--match-schema:匹配（要反转的）方案名(用户名)， match-table：匹配表名（支持正则表达式，.*：任意字符串） -->
+    <schema-selection match-table="USER" match-schema="MYDB"/>
+    <schema-selection match-table="HELLO" match-schema="MYDB"/>
+    <!-- <schema-selection match-table="T_BC_.*" match-schema="mydb"/> -->
+    <!-- 将MYDB下的USER表反转生成cn.com.techsure.table包下的 User类，主键策略为uuid-->
+    <!--主键策略为根据数据库的类型自增 ：class="native"-->
+    <table name="USER" schema="MYDB"
+        class="cn.com.techsure.table.User">
+        <primary-key>
+            <generator class="uuid"></generator>
+        </primary-key>
+    </table>
+    
+    <table name="HELLO" schema="MYDB"
+        class="cn.com.techsure.table.Hello">
+        <primary-key>
+            <generator class="native"></generator>
+        </primary-key>
+    </table>
+</hibernate-reverse-engineering>
