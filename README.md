@@ -17,3 +17,5 @@
 #根据hibernate.cfg.xml映射的mapping resource，即hbm.xml文件来生成数据库表
 #必须配置hibernate.dialect
 
+#执行maven命令：mvn hibernate3:hbm2dao 根据配置文件给每个表生成DAO文件
+

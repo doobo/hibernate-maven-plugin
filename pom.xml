@@ -38,17 +38,23 @@
 	   <version>2.2</version>   
 	   <configuration>
 	       <components>
+
+			   <component>
+				   <name>hbm2java</name>
+				   <implementation>jdbcconfiguration</implementation>
+				   <outputDirectory>src/main/java/</outputDirectory>
+			   </component>
+
+			   <component>
+				   <name>hbm2dao</name>
+				   <implementation>jdbcconfiguration</implementation>
+				   <outputDirectory>src/main/java/</outputDirectory>
+			   </component>
 	          				
 	           <component>
 	               <name>hbm2hbmxml</name>
 	               <implementation>jdbcconfiguration</implementation>
 	               <outputDirectory>src/main/resources/</outputDirectory>
-	           </component>
-	           	          
-	           <component>
-	               <name>hbm2java</name>
-	               <implementation>jdbcconfiguration</implementation>
-	               <outputDirectory>src/main/java/</outputDirectory>
 	           </component>
 	           
 	           <component>
@@ -79,7 +85,7 @@
 	           <packagename>cn.com.techsure.table</packagename>
 	           <jdk5>true</jdk5>
 	           <!-- 如果设置为true则生成JPA注解，若设置为false则生成hbml.xml -->
-	            <ejb3>false</ejb3>
+			   <ejb3>false</ejb3>
 	        </componentProperties>
 	    </configuration>
 	    <dependencies>
