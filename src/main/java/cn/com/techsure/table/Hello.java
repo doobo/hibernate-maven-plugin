@@ -1,5 +1,5 @@
 package cn.com.techsure.table;
-// Generated 2017-10-14 23:39:36 by Hibernate Tools 3.2.2.GA
+// Generated 2017-10-15 0:17:08 by Hibernate Tools 3.2.2.GA
 
 
 
